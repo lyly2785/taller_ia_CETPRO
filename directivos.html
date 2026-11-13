@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prompts del taller IA - Directivos CETPRO</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: single-column mobile-first page, scanned via QR on a phone during the live workshop */
+  :root {
+    --bg: #ffffff;
+    --surface: #f4f6fb;
+    --fg: #1a2350;
+    --muted: #5b6584;
+    --accent: #f2660f;
+    --accent-ink: #ffffff;
+    --blue: #1e3aa8;
+    --line: #e2e6f2;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12162b;
+      --surface: #1b2140;
+      --fg: #eef0fa;
+      --muted: #a6adc9;
+      --accent: #ff8a3d;
+      --accent-ink: #1a1200;
+      --blue: #7f9bff;
+      --line: #2b3260;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12162b;
+    --surface: #1b2140;
+    --fg: #eef0fa;
+    --muted: #a6adc9;
+    --accent: #ff8a3d;
+    --accent-ink: #1a1200;
+    --blue: #7f9bff;
+    --line: #2b3260;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+    padding-inline: 20px;
+    padding-block: max(28px, env(safe-area-inset-top, 0px)) 48px;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+
+  header { margin-bottom: 28px; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--blue); font-weight: 700; margin: 0 0 6px;
+  }
+  h1 {
+    font-family: "Poppins", "Inter", sans-serif;
+    font-weight: 700;
+    font-size: clamp(24px, 6vw, 32px);
+    line-height: 1.15;
+    margin: 0 0 8px;
+    text-wrap: balance;
+    color: var(--fg);
+  }
+  header p { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.5; }
+
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin: 18px 0 30px;
+  }
+  .legend span {
+    font-size: 12px; font-weight: 600; color: var(--blue);
+    background: var(--surface); border: 1px solid var(--line);
+    padding: 5px 10px; border-radius: 999px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 22px;
+  }
+  .card h2 {
+    font-family: "Poppins", "Inter", sans-serif;
+    font-size: 18px; margin: 0 0 4px; color: var(--accent);
+  }
+  .card .subt { font-size: 13px; color: var(--muted); margin: 0 0 14px; }
+
+  .prompt {
+    font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 12.5px; line-height: 1.6;
+    white-space: pre-wrap;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px;
+    margin: 0 0 12px;
+    overflow-x: auto;
+    min-width: 0;
+  }
+  .prompt b { color: var(--blue); }
+
+  button.copy {
+    font: inherit; font-size: 13px; font-weight: 600;
+    color: var(--accent-ink); background: var(--accent);
+    border: none; border-radius: 999px;
+    padding: 9px 16px; cursor: pointer;
+  }
+  button.copy:active { opacity: 0.85; }
+  button.copy[data-copied="1"] { background: var(--blue); }
+
+  .lbl { font-size: 13px; font-weight: 600; color: var(--blue); margin: 14px 0 6px; }
+  .steps { margin: 0 0 4px; padding-left: 20px; font-size: 14px; line-height: 1.6; color: var(--fg); }
+  footer {
+    margin-top: 8px; padding-top: 18px; border-top: 1px solid var(--line);
+    font-size: 12.5px; color: var(--muted); line-height: 1.6;
+  }
+  footer strong { color: var(--fg); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Grupo Horizonte Educa Perú &middot; 13/11/2026</p>
+    <h1>Prompts del taller de IA para directivos</h1>
+    <p>Sesión "Inteligencia Artificial (IA) aplicada al Plan de Estudios" &mdash; CETPRO Piloto Femenino de Lima. Copia el prompt, pégalo en la herramienta indicada y completa los datos entre corchetes. Usa datos de ejemplo: no ingreses datos personales de estudiantes.</p>
+  </header>
+
+  <div class="legend">
+    <span>R &mdash; Rol</span>
+    <span>I &mdash; Interacción</span>
+    <span>T &mdash; Tarea</span>
+    <span>A &mdash; Adaptabilidad</span>
+  </div>
+
+  <div class="card" id="ej1">
+    <h2>Ejercicio 1 &middot; Ficha de seguimiento de plazos de registro</h2>
+    <p class="subt">ChatGPT. Las fechas del periodo son de ejemplo; reemplázalas por las de tu CETPRO.</p>
+    <pre class="prompt" id="a0"><b>Rol:</b> Actúa como especialista en gestión educativa de educación técnico-productiva (CETPRO), con experiencia en los Lineamientos Académicos Generales (RVM N.° 188-2020-MINEDU).
+
+<b>Interacción:</b> Datos del periodo. CETPRO: CETPRO Piloto Femenino de Lima. Programa de estudio: Cocina. Inicio del periodo: 02/03/2026 (fecha de ejemplo). Término del periodo: 31/07/2026 (fecha de ejemplo). Procesos a seguir: registro de matrícula y registro de evaluación. Pregúntame antes de responder si necesitas algún dato adicional.
+
+<b>Tarea:</b> Genera una tabla de seguimiento con las columnas: proceso, plazo normativo, fecha límite, responsable, evidencia y estado. Usa solo estos plazos: el registro de matrícula, dentro del mes siguiente al inicio del periodo académico; el registro de evaluación, a los 30 días hábiles de haber culminado el periodo académico.
+
+<b>Adaptabilidad:</b> No inventes plazos que no te di: márcalos como “verificar en la norma”. Presenta la tabla lista para copiar a Excel o Word y ajústala según mi retroalimentación. Indica que las fechas límite deben verificarse con el calendario oficial.</pre>
+    <button class="copy" data-target="a0">Copiar prompt</button>
+  </div>
+  <div class="card" id="ej2">
+    <h2>Ejercicio 2 &middot; Resolución Directoral que aprueba el Plan Anual</h2>
+    <p class="subt">ChatGPT. Verifica que las normas citadas estén vigentes antes de usar el documento.</p>
+    <pre class="prompt" id="b0"><b>Rol:</b> Actúa como especialista en gestión educativa de educación técnico-productiva (CETPRO) y redacción de resoluciones directorales.
+
+<b>Interacción:</b> Datos. CETPRO: CETPRO Piloto Femenino de Lima. UGEL: 03. Año: [año]. Documento a aprobar: Plan Anual de Trabajo. Cita únicamente estas normas: Ley N.° 28044, D.S. N.° 011-2012-ED, RVM N.° 188-2020-MINEDU y RM N.° 0130-2008-ED. Pregúntame antes de responder si necesitas algún dato adicional.
+
+<b>Tarea:</b> Redacta el borrador de una Resolución Directoral (visto, considerando, se resuelve) que aprueba el Plan Anual de Trabajo del CETPRO.
+
+<b>Adaptabilidad:</b> Usa formato formal y sin jergas. Deja entre corchetes el número de resolución, la fecha y el nombre del director. No agregues normas que no te indiqué. Ajusta el texto según mi retroalimentación.</pre>
+    <button class="copy" data-target="b0">Copiar prompt</button>
+  </div>
+  <div class="card" id="ej3">
+    <h2>Ejercicio 3 &middot; Informe de avance de indicadores para la UGEL</h2>
+    <p class="subt">ChatGPT. Las cifras son ficticias; en tu CETPRO usa los datos de tu registro.</p>
+    <pre class="prompt" id="c0"><b>Rol:</b> Actúa como especialista en gestión educativa de educación técnico-productiva (CETPRO), especializado en seguimiento de indicadores.
+
+<b>Interacción:</b> Datos de ejemplo (ficticios) del periodo: estudiantes matriculados [N], estudiantes evaluados [N], estudiantes aprobados [N], certificados emitidos [N]. Pregúntame antes de responder si necesitas algún dato adicional.
+
+<b>Tarea:</b> Calcula los porcentajes de evaluados sobre matriculados, aprobados sobre evaluados y certificados sobre aprobados. Redacta un informe breve de avance dirigido a la UGEL, con una tabla de resultados y conclusiones.
+
+<b>Adaptabilidad:</b> Muestra las fórmulas que usaste. No inventes datos. Usa lenguaje formal y ajusta el informe según mi retroalimentación.</pre>
+    <button class="copy" data-target="c0">Copiar prompt</button>
+  </div>
+  <div class="card" id="notebooklm">
+    <h2>Paso 2 &middot; NotebookLM: verificar plazos y citas en la norma</h2>
+    <p class="subt">NotebookLM cita la página de la fuente de donde toma cada dato, lo que da trazabilidad.</p>
+    <ol class="steps">
+      <li>Crear un notebook nuevo.</li>
+      <li>Subir como fuente los Lineamientos Académicos Generales para CETPRO (RVM N.° 188-2020-MINEDU, PDF).</li>
+      <li>Escribir una de estas solicitudes en el chat del notebook.</li>
+    </ol>
+    <p class="lbl">Verificar plazos</p>
+    <pre class="prompt" id="n0">Con base solo en las fuentes cargadas, indica el plazo del registro de matrícula y el del registro de evaluación, y cita la página de donde lo tomas.</pre>
+    <button class="copy" data-target="n0">Copiar prompt</button>
+    <p class="lbl">Preguntas guía</p>
+    <pre class="prompt" id="n1">Genera 5 preguntas guía para verificar si mi ficha de seguimiento cumple con lo que indica la norma.</pre>
+    <button class="copy" data-target="n1">Copiar prompt</button>
+  </div>
+  <div class="card" id="ej4">
+    <h2>Ejercicio 4 &middot; Logo y membrete en Word</h2>
+    <p class="subt">ChatGPT. Adjunta el logo del CETPRO y el borrador del documento antes de enviar el prompt.</p>
+    <pre class="prompt" id="d0"><b>Rol:</b> Actúa como asistente de maquetación de documentos institucionales para un CETPRO.
+
+<b>Interacción:</b> Adjunto el logo del CETPRO y el borrador del documento (Resolución Directoral o informe). Necesito colocar el logo y el membrete en el encabezado, con fuente y márgenes uniformes. Si falta algún dato de formato (fuente, tamaño, márgenes), pregúntamelo antes de generar el archivo.
+
+<b>Tarea:</b> Genera un archivo Word (.docx) con el logo en el encabezado, el nombre del CETPRO y el código modular en el pie de página.
+
+<b>Adaptabilidad:</b> Corrige las faltas ortográficas y las oraciones incompletas o incoherentes. Usa lenguaje formal y sin jergas.</pre>
+    <button class="copy" data-target="d0">Copiar prompt</button>
+  </div>
+  <div class="card" id="plantilla">
+    <h2>Plantilla RITA en blanco</h2>
+    <p class="subt">Para crear tu propio prompt con un documento real de tu CETPRO.</p>
+    <pre class="prompt" id="e0"><b>Rol:</b> Actúa como especialista en [ÁREA] de un CETPRO.
+
+<b>Interacción:</b> Datos: [CETPRO, programa, periodo, cifras u otros datos]. Pregúntame antes de responder si necesitas algún dato adicional.
+
+<b>Tarea:</b> [Documento o producto que necesitas: oficio, informe, ficha, resolución].
+
+<b>Adaptabilidad:</b> [Tono, formato de salida, qué no debe inventar]. Ajusta según mi retroalimentación.</pre>
+    <button class="copy" data-target="e0">Copiar prompt</button>
+  </div>
+  <footer>
+    <strong>Recuerda:</strong> la IA propone el borrador; la validación frente a la normativa vigente y a las indicaciones de la UGEL es tuya. Los plazos y las normas de esta página deben verificarse en las fuentes oficiales.
+  </footer>
+</div>
+
+<script>
+  document.querySelectorAll('button.copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var pre = document.getElementById(btn.dataset.target);
+      var text = pre.innerText;
+      function marked() {
+        var original = btn.textContent;
+        btn.textContent = 'Copiado';
+        btn.dataset.copied = '1';
+        setTimeout(function () {
+          btn.textContent = original;
+          btn.removeAttribute('data-copied');
+        }, 1800);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(marked, function () {
+          selectFallback(pre);
+        });
+      } else {
+        selectFallback(pre);
+      }
+      function selectFallback(el) {
+        var range = document.createRange();
+        range.selectNodeContents(el);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        try { if (document.execCommand("copy")) { marked(); } } catch (e) {}
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
