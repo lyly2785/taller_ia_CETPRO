@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Herramientas de IA - Directivos CETPRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: single-column mobile-first page, scanned via QR on a phone during the live workshop */
+  :root {
+    --bg: #ffffff;
+    --surface: #f4f6fb;
+    --fg: #1a2350;
+    --muted: #5b6584;
+    --accent: #f2660f;
+    --accent-ink: #ffffff;
+    --blue: #1e3aa8;
+    --line: #e2e6f2;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12162b;
+      --surface: #1b2140;
+      --fg: #eef0fa;
+      --muted: #a6adc9;
+      --accent: #ff8a3d;
+      --accent-ink: #1a1200;
+      --blue: #7f9bff;
+      --line: #2b3260;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12162b;
+    --surface: #1b2140;
+    --fg: #eef0fa;
+    --muted: #a6adc9;
+    --accent: #ff8a3d;
+    --accent-ink: #1a1200;
+    --blue: #7f9bff;
+    --line: #2b3260;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+    padding-inline: 20px;
+    padding-block: max(28px, env(safe-area-inset-top, 0px)) 48px;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+
+  header { margin-bottom: 28px; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--blue); font-weight: 700; margin: 0 0 6px;
+  }
+  h1 {
+    font-family: "Poppins", "Inter", sans-serif;
+    font-weight: 700;
+    font-size: clamp(24px, 6vw, 32px);
+    line-height: 1.15;
+    margin: 0 0 8px;
+    text-wrap: balance;
+    color: var(--fg);
+  }
+  header p { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.5; }
+
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin: 18px 0 30px;
+  }
+  .legend span {
+    font-size: 12px; font-weight: 600; color: var(--blue);
+    background: var(--surface); border: 1px solid var(--line);
+    padding: 5px 10px; border-radius: 999px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 22px;
+  }
+  .card h2 {
+    font-family: "Poppins", "Inter", sans-serif;
+    font-size: 18px; margin: 0 0 4px; color: var(--accent);
+  }
+  .card .subt { font-size: 13px; color: var(--muted); margin: 0 0 14px; }
+
+  .prompt {
+    font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 12.5px; line-height: 1.6;
+    white-space: pre-wrap;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px;
+    margin: 0 0 12px;
+    overflow-x: auto;
+    min-width: 0;
+  }
+  .prompt b { color: var(--blue); }
+
+  button.copy {
+    font: inherit; font-size: 13px; font-weight: 600;
+    color: var(--accent-ink); background: var(--accent);
+    border: none; border-radius: 999px;
+    padding: 9px 16px; cursor: pointer;
+  }
+  button.copy:active { opacity: 0.85; }
+  button.copy[data-copied="1"] { background: var(--blue); }
+
+  .lbl { font-size: 13px; font-weight: 600; color: var(--blue); margin: 14px 0 6px; }
+  .steps { margin: 0 0 4px; padding-left: 20px; font-size: 14px; line-height: 1.6; color: var(--fg); }
+  footer {
+    margin-top: 8px; padding-top: 18px; border-top: 1px solid var(--line);
+    font-size: 12.5px; color: var(--muted); line-height: 1.6;
+  }
+  footer strong { color: var(--fg); }
+
+
+  .tool {
+    display: block; text-decoration: none; color: var(--fg);
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 16px; padding: 18px 20px; margin-bottom: 14px;
+  }
+  .tool:active { opacity: 0.85; }
+  .tool strong { display: block; font-family: "Poppins","Inter",sans-serif; font-size: 18px; color: var(--accent); }
+  .tool span { display: block; font-size: 13.5px; color: var(--muted); margin-top: 3px; }
+  .tool em { display: block; font-style: normal; font-size: 12.5px; color: var(--blue); margin-top: 8px; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Grupo Horizonte Educa Perú &middot; 13/11/2026</p>
+    <h1>Herramientas de IA del taller</h1>
+    <p>Abre la herramienta que vas a usar. Los prompts del taller funcionan igual en ambas.</p>
+  </header>
+
+  <a class="tool" href="https://chatgpt.com" target="_blank" rel="noopener">
+    <strong>ChatGPT</strong>
+    <span>chatgpt.com</span>
+    <em>Abrir ChatGPT &rarr;</em>
+  </a>
+  <a class="tool" href="https://gemini.google.com" target="_blank" rel="noopener">
+    <strong>Gemini</strong>
+    <span>gemini.google.com &middot; requiere cuenta Google</span>
+    <em>Abrir Gemini &rarr;</em>
+  </a>
+
+  <a class="tool" href="index.html">
+    <strong>Prompts del taller</strong>
+    <span>Ejercicios 1 a 4 y plantilla RITA</span>
+    <em>Ir a los prompts &rarr;</em>
+  </a>
+
+  <footer>
+    <strong>Recuerda:</strong> no ingreses datos personales de estudiantes. La validación del resultado es tuya.
+  </footer>
+</div>
+</body>
+</html>
