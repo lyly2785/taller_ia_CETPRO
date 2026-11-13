@@ -125,23 +125,58 @@
     font-size: 12.5px; color: var(--muted); line-height: 1.6;
   }
   footer strong { color: var(--fg); }
+
+  /* Vistas: índice y un ejercicio a la vez (se activa solo con JS; sin JS se ven todos) */
+  .menu { display: none; }
+  .back { display: none; }
+  html.js .menu.on { display: block; }
+  html.js .card { display: none; }
+  html.js .card.on { display: block; }
+  html.js .back.on { display: inline-block; }
+  html.js body.detail .intro { display: none; }
+  .menu h2 { font-family: "Poppins","Inter",sans-serif; font-size: 16px; margin: 0 0 12px; color: var(--blue); }
+  .menu a {
+    display: block; text-decoration: none; color: var(--fg);
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 14px; padding: 14px 16px; margin-bottom: 10px;
+  }
+  .menu a:active { opacity: 0.85; }
+  .menu a strong { display: block; font-size: 15px; color: var(--accent); }
+  .menu a span { display: block; font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .back {
+    font-size: 14px; font-weight: 600; color: var(--blue); text-decoration: none;
+    background: var(--surface); border: 1px solid var(--line);
+    padding: 8px 14px; border-radius: 999px; margin-bottom: 18px;
+  }
 </style>
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
 <div class="wrap">
-  <header>
+  <header class="intro">
     <p class="eyebrow">Grupo Horizonte Educa Perú &middot; 13/11/2026</p>
     <h1>Prompts del taller de IA para directivos</h1>
     <p>Sesión "Inteligencia Artificial (IA) aplicada al Plan de Estudios" &mdash; CETPRO Piloto Femenino de Lima. Copia el prompt, pégalo en la herramienta indicada y completa los datos entre corchetes. Usa datos de ejemplo: no ingreses datos personales de estudiantes.</p>
   </header>
 
-  <div class="legend">
+  <div class="legend intro">
     <span>R &mdash; Rol</span>
     <span>I &mdash; Interacción</span>
     <span>T &mdash; Tarea</span>
     <span>A &mdash; Adaptabilidad</span>
   </div>
+
+  <nav class="menu" id="menu" aria-label="Índice de ejercicios">
+    <h2>Elige un ejercicio</h2>
+    <a href="#ej1"><strong>Ejercicio 1</strong><span>Ficha de seguimiento de plazos de registro</span></a>
+    <a href="#ej2"><strong>Ejercicio 2</strong><span>Calendarización del año académico</span></a>
+    <a href="#ej3"><strong>Ejercicio 3</strong><span>Informe de avance de indicadores para la UGEL</span></a>
+    <a href="#notebooklm"><strong>Paso 2 &middot; NotebookLM</strong><span>Verificar plazos y citas en la norma</span></a>
+    <a href="#ej4"><strong>Ejercicio 4</strong><span>Logo y membrete en Word</span></a>
+    <a href="#plantilla"><strong>Plantilla RITA</strong><span>Prompt en blanco para tu propio documento</span></a>
+  </nav>
+  <a class="back" id="back" href="#">&larr; Volver al índice</a>
 
   <div class="card" id="ej1">
     <h2>Ejercicio 1 &middot; Ficha de seguimiento de plazos de registro</h2>
@@ -255,6 +290,25 @@
       }
     });
   });
+</script>
+
+<script>
+  (function () {
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+    var menu = document.getElementById('menu');
+    var back = document.getElementById('back');
+    function route() {
+      var id = decodeURIComponent(location.hash.replace('#', ''));
+      var target = cards.filter(function (c) { return c.id === id; })[0];
+      cards.forEach(function (c) { c.classList.toggle('on', c === target); });
+      menu.classList.toggle('on', !target);
+      back.classList.toggle('on', !!target);
+      document.body.classList.toggle('detail', !!target);
+      window.scrollTo(0, 0);
+    }
+    window.addEventListener('hashchange', route);
+    route();
+  })();
 </script>
 
 </body>
